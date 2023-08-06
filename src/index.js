@@ -1,13 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { ConfigProvider } from "antd";
+import Router from "./router";
+import { Provider } from "react-redux";
+import store from "./app/store";
+import { BrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#487eb0 ",
+          },
+        }}
+      >
+        <BrowserRouter basename="/">
+          <Router />
+        </BrowserRouter>
+      </ConfigProvider>
+    </Provider>
   </React.StrictMode>
 );
 
